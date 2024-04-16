@@ -1,10 +1,8 @@
 import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mango/utils/icons.dart';
+import 'package:mango/utils/textcolor.dart';
 
 void main() {
   runApp(const MaterialApp(home: Upload_Photo()));
@@ -57,9 +55,12 @@ class _Upload_PhotoState extends State<Upload_Photo> {
               Container(
                 width: 396,
                 height: 200,
-                child: Padding(
+                child: const Padding(
                   padding: EdgeInsets.only(top: 7, left: 9),
-                  child: Text('Upload Photo'),
+                  child: Text(
+                    'Upload Photo',
+                    style: Textcolor.fontsizecolor,
+                  ),
                 ),
                 decoration: BoxDecoration(
                   border: Border.all(
@@ -221,30 +222,41 @@ class _Upload_PhotoState extends State<Upload_Photo> {
                   );
                 }
 
-                return Stack(
-                  children: [
-                    Container(
-                        padding: const EdgeInsets.all(5),
-                        child: Image.file(
-                          File(postImg[index].path),
-                          height: 400,
-                        )),
-                    Positioned(
-                      top: 0,
-                      right: 0,
-                      child: IconButton(
-                        icon: const Icon(
-                          Icons.delete,
-                          color: Colors.white,
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            postImg.removeAt(index);
-                          });
-                        },
+                return Center(
+                  child: Container(
+                    margin: const EdgeInsets.all(3),
+                    child: Center(
+                      child: Stack(
+                        children: [
+                          Image.file(File(postImg[index].path),
+                              fit: BoxFit.contain),
+                          Positioned(
+                            top: 0,
+                            right: 0,
+                            child: IconButton(
+                              icon: Container(
+                                width: 28,
+                                height: 28,
+                                decoration: BoxDecoration(
+                                    color: const Color.fromRGBO(
+                                        146, 146, 149, 0.89),
+                                    borderRadius: BorderRadius.circular(5)),
+                                child: const Icon(
+                                  Icons.delete,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  postImg.removeAt(index);
+                                });
+                              },
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
+                  ),
                 );
               },
             ),

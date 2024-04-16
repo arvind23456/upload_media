@@ -1,34 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:mango/flow2/category_list.dart';
 
 class Logoicon {
   static final location = Image.asset(
-    'assets/images/location (2) 1.png',
+    'assets/images/location.png',
     width: 24,
     height: 24,
   );
   static final upload = Image.asset(
-    'assets/images/Vector (7).png',
+    'assets/images/uploadbutton.png',
     width: 24,
     height: 24,
   );
   static final tag = Image.asset(
-    'assets/images/tag (2) 2.png',
+    'assets/images/tag.png',
     width: 24,
     height: 24,
   );
   static final cross = Image.asset(
-    'assets/images/crosss.png',
+    'assets/images/cross.png',
     width: 9,
     height: 9,
   );
+
   static final categorymenu = Image.asset(
-    'assets/images/menu (1) 1 (1).png',
+    'assets/images/menu.png',
     width: 23,
     height: 23,
   );
   static final title = Image.asset(
-    'assets/images/title 1 (2).png',
+    'assets/images/title.png',
+    width: 24,
+    height: 24,
+  );
+  static final searchicon = Image.asset(
+    'assets/images/searchicon.png',
+  );
+  static final textremoval = Image.asset(
+    'assets/images/Group.png',
     width: 24,
     height: 24,
   );

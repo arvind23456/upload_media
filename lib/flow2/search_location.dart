@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class Searchlocation extends StatefulWidget {
   const Searchlocation({super.key});
@@ -26,7 +25,22 @@ class _SearchlocationState extends State<Searchlocation> {
 
   var filterList = [];
 
-  void SearchFilter(String value) {
+  bool isSearching = false;
+
+  TextEditingController searchcontroller = TextEditingController();
+
+  @override
+  void initState() {
+    searchcontroller.addListener(() {
+      setState(() {
+        if (searchcontroller.text.isNotEmpty) {
+          isSearching = true;
+        }
+      });
+    });
+  }
+
+  void searchfilter(String value) {
     setState(() {
       filterList = arrNames
           .where(
@@ -47,7 +61,7 @@ class _SearchlocationState extends State<Searchlocation> {
               Icons.arrow_back_outlined,
               color: Colors.black,
             )),
-        title: const Text('Search location'),
+        title: const Text('Search for location'),
         titleSpacing: 0.2,
       ),
       body: SingleChildScrollView(
@@ -59,61 +73,96 @@ class _SearchlocationState extends State<Searchlocation> {
               child: Container(
                 height: 45,
                 child: TextField(
-                  onTap: () {
-                    print("{$arrNames}");
-                  },
+                  controller: searchcontroller,
                   onChanged: (value) {
-                    SearchFilter(value);
+                    searchfilter(value);
+                    setState(() {});
                   },
                   decoration: InputDecoration(
-                      filled: true,
-                      hintText: 'Search location',
-                      hintStyle: const TextStyle(
-                          color: Color.fromRGBO(110, 111, 116, 1)),
-                      contentPadding: const EdgeInsets.all(8),
-                      fillColor: const Color.fromRGBO(248, 248, 251, 1),
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
-                              color: Color.fromRGBO(229, 229, 229, 1)),
-                          borderRadius: BorderRadius.circular(14)),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(14),
+                    filled: true,
+                    hintText: 'Search for location',
+                    hintStyle: const TextStyle(
+                        color: Color.fromRGBO(110, 111, 116, 1)),
+                    contentPadding: const EdgeInsets.all(8),
+                    fillColor: const Color.fromRGBO(248, 248, 251, 1),
+                    focusedBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
                             color: Color.fromRGBO(229, 229, 229, 1)),
-                      ),
-                      suffixIcon: const Icon(
-                        Icons.search,
-                        size: 32,
-                        color: Colors.black45,
-                      )),
+                        borderRadius: BorderRadius.circular(14)),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(14),
+                      borderSide: const BorderSide(
+                          color: Color.fromRGBO(229, 229, 229, 1)),
+                    ),
+                    suffixIcon: Image.asset('assets/images/Vector (10).png'),
+                  ),
                 ),
               ),
             ),
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: filterList.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  onTap: () {
-                    Navigator.pop(context, filterList[index]);
-                  },
-                  title: Text(
-                    filterList[index],
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                    ),
+            if (filterList.isEmpty && isSearching)
+              const Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 250),
+                  child: Text(
+                    'Location Not Found',
+                    style: TextStyle(color: Colors.black54, fontSize: 27),
                   ),
-                  subtitle: const Padding(
-                    padding: EdgeInsets.only(left: 05),
-                    child: Text('Chandigarh'),
+                ),
+              )
+            else
+              Container(
+                child: SafeArea(
+                  top: true,
+                  bottom: true,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: filterList.length,
+                    physics: ScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        onTap: () {
+                          Navigator.pop(context, filterList[index]);
+                        },
+                        title: Text(
+                          filterList[index],
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        subtitle: const Padding(
+                          padding: EdgeInsets.only(left: 05),
+                          child: Text('Chandigarh'),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
-            ),
+                ),
+              ),
           ],
         ),
       ),
     );
   }
 }
+
+
+
+
+/*
+ Container(
+                child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: filterlist.length,
+                    physics: ScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(
+                          filterlist[index],
+                          style: const TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
+                      );
+                    }),
+              ),  */

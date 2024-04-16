@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mango/utils/icons.dart';
+import 'package:mango/utils/textcolor.dart';
 
 class Addtitle extends StatefulWidget {
   const Addtitle({super.key});
@@ -28,17 +30,19 @@ class _AddtitleState extends State<Addtitle> {
         child: Row(
           children: [
             Container(
-              child: Image.asset('assets/images/title 1.png'),
+              child: Logoicon.title,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 10),
+              padding: const EdgeInsets.only(left: 12.5),
               child: Container(
                   width: 200,
-                  child: TextField(
+                  child: const TextField(
+                    style: TextStyle(fontWeight: FontWeight.w500),
                     maxLines: 1,
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: 'Add Title',
+                      hintStyle: Textcolor.fontsizecolor,
                     ),
                   )),
             ),
