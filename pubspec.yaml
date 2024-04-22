@@ -38,6 +38,7 @@ dependencies:
   photo_manager_image_provider: ^2.1.1
   permission_handler: ^11.3.1
   media_picker_widget: ^1.0.7
+  fluttertoast: ^8.2.5
 
   
   

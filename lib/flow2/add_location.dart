@@ -29,25 +29,29 @@ class _AddlocationState extends State<Addlocation> {
           children: [
             Logoicon.location,
             TextButton(
-                onPressed: () async {
-                  final city = await Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Searchlocation(),
-                    ),
-                  );
-                  setState(() {
-                    selectedCity = city;
-                  });
-                  print(selectedCity);
-                },
-                child: Text(
-                  selectedCity ?? 'Add Location',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: selectedCity == null ? Colors.black : Colors.blue,
+              onPressed: () async {
+                final city = await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Searchlocation(),
                   ),
-                )),
+                );
+                setState(() {
+                  if (city != null) selectedCity = city;
+                });
+                print(selectedCity);
+              },
+              child: Text(
+                selectedCity ?? 'Add Location',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: selectedCity == null
+                      ? Color.fromRGBO(130, 127, 127, 1)
+                      : Colors.blue,
+                ),
+              ),
+            ),
           ],
         ),
       ),

@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:mango/utils/icons.dart';
 
 class Searchforfriends extends StatefulWidget {
   const Searchforfriends({super.key});
@@ -22,7 +24,22 @@ class _SearchforfriendsState extends State<Searchforfriends> {
     'Liam23Jones'
   ];
 
+  TextEditingController searchController = TextEditingController();
+
+  bool isSearching = false;
+
   var FilterList = [];
+
+  @override
+  void initState() {
+    searchController.addListener(() {
+      setState(() {
+        if (searchController.text.isNotEmpty) {
+          isSearching = true;
+        }
+      });
+    });
+  }
 
   void SearchFilter(String value) {
     setState(() {
@@ -33,13 +50,19 @@ class _SearchforfriendsState extends State<Searchforfriends> {
     });
   }
 
+  void showToast() {
+    Fluttertoast.showToast(msg: "User already selected");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: TextButton(
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.pop(
+                context,
+              );
             },
             child: Icon(
               Icons.arrow_back,
@@ -57,16 +80,13 @@ class _SearchforfriendsState extends State<Searchforfriends> {
               child: SizedBox(
                 height: 45,
                 child: TextField(
+                  controller: searchController,
                   onChanged: (value) {
                     SearchFilter(value);
                   },
                   decoration: InputDecoration(
                     hintText: 'Search for user',
-                    suffixIcon: Icon(
-                      Icons.search,
-                      size: 32,
-                      color: Colors.black45,
-                    ),
+                    suffixIcon: Image.asset('assets/images/Vector (10).png'),
                     contentPadding: EdgeInsets.all(9),
                     filled: true,
                     fillColor: Color.fromRGBO(248, 248, 251, 1),
@@ -83,60 +103,64 @@ class _SearchforfriendsState extends State<Searchforfriends> {
                 ),
               ),
             ),
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: FilterList.length,
-              itemBuilder: (context, index) {
-                if (FilterList.isEmpty) {
-                  Center(
-                    child: Text(
-                      'User  Not found',
-                      style: TextStyle(
-                        fontSize: 20,
+            if (FilterList.isEmpty && isSearching)
+              const Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 250),
+                  child: Text(
+                    'User not found',
+                    style: TextStyle(color: Colors.black54, fontSize: 27),
+                  ),
+                ),
+              )
+            else
+              SafeArea(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: ScrollPhysics(),
+                  itemCount: FilterList.length,
+                  itemBuilder: (context, index) {
+                    final verifiedNames = [
+                      'Graver_Merchant',
+                      'KapturetheLight',
+                      'Olivi0Smith',
+                      'Mason 3illiam',
+                      'Evelyn_erchanr',
+                    ];
+                    final bool isVerified =
+                        verifiedNames.contains(arrNames[index]);
+
+                    final option = FilterList[index];
+
+                    return ListTile(
+                      onTap: () {
+                        Navigator.pop(context, FilterList[index]);
+                        print(FilterList[index]);
+                      },
+                      contentPadding: EdgeInsets.all(9),
+                      leading: CircleAvatar(
+                        backgroundImage: NetworkImage(
+                            'https://randomuser.me/api/portraits/men/$index.jpg'),
+                        radius: 35,
                       ),
-                    ),
-                  );
-                }
-
-                final verifiedNames = [
-                  'Graver_Merchant',
-                  'KapturetheLight',
-                  'Olivi0Smith',
-                  'Mason 3illiam',
-                  'Evelyn_erchanr',
-                ];
-                final bool isVerified = verifiedNames.contains(arrNames[index]);
-
-                final option = FilterList[index];
-
-                return ListTile(
-                  onTap: () {
-                    Navigator.pop(context, FilterList[index]);
-                    print(FilterList[index]);
+                      title: Row(
+                        children: [
+                          Text(FilterList[index]),
+                          if (isVerified)
+                            Container(
+                              padding: EdgeInsets.only(left: 5),
+                              child: Icon(
+                                Icons.verified,
+                                color: Colors.blue,
+                                size: 15,
+                              ),
+                            ),
+                        ],
+                      ),
+                    );
                   },
-                  contentPadding: EdgeInsets.all(9),
-                  leading: CircleAvatar(
-                    backgroundImage: NetworkImage(
-                        'https://randomuser.me/api/portraits/men/$index.jpg'),
-                    radius: 35,
-                  ),
-                  title: Row(
-                    children: [
-                      Text(FilterList[index]),
-                      if (isVerified)
-                        Container(
-                          padding: EdgeInsets.only(left: 5),
-                          child: Icon(
-                            Icons.verified,
-                            color: Colors.blue,
-                            size: 15,
-                          ),
-                        ),
-                    ],
-                  ),
-                );
-              },
-            )
+                ),
+              ),
           ],
         ),
       ),
