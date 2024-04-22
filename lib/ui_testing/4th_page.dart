@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:mango/flow2/add_location.dart';
-import 'package:mango/flow2/tag_friends.dart';
-import 'package:mango/ui/gallery1.dart';
-import 'package:mango/ui/tagfriend1.dart';
+import 'package:mango/video_flow/add_location.dart';
+import 'package:mango/video_flow/tag_friends.dart';
+import 'package:mango/ui_testing/gallery1.dart';
+import 'package:mango/ui_testing/tagfriend1.dart';
 
 void main() {
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: CreatePost()));

@@ -8,7 +8,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:mango/ui/main.dart';
 import 'package:mango/ui/search_friends.dart';
 
 void main() {

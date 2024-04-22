@@ -4,14 +4,14 @@ import 'package:mango/utils/textcolor.dart';
 import 'package:video_player/video_player.dart';
 import 'dart:io';
 
-class Upload_Video extends StatefulWidget {
-  const Upload_Video({Key? key});
+class UploadVideo extends StatefulWidget {
+  const UploadVideo({Key? key});
 
   @override
-  State<Upload_Video> createState() => _Upload_VideoState();
+  State<UploadVideo> createState() => _UploadVideoState();
 }
 
-class _Upload_VideoState extends State<Upload_Video> {
+class _UploadVideoState extends State<UploadVideo> {
   List<XFile> postVideo = [];
 
   List<VideoPlayerController?> _controllers = [];
@@ -222,21 +222,21 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
 
 */
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:image_picker/image_picker.dart';
 import 'package:mango/utils/icons.dart';
 import 'package:mango/utils/textcolor.dart';
 import 'package:video_player/video_player.dart';
 import 'dart:io';
 
-class Upload_Video extends StatefulWidget {
-  const Upload_Video({super.key});
+class UploadVideo extends StatefulWidget {
+  const UploadVideo({super.key});
 
   @override
-  State<Upload_Video> createState() => _Upload_VideoState();
+  State<UploadVideo> createState() => _UploadVideoState();
 }
 
-class _Upload_VideoState extends State<Upload_Video> {
+class _UploadVideoState extends State<UploadVideo> {
   List<XFile> postVideo = [];
 
   VideoPlayerController? _controller;
@@ -278,9 +278,9 @@ class _Upload_VideoState extends State<Upload_Video> {
             decoration: BoxDecoration(
                 border: Border.all(
               width: 1,
-              color: Color.fromRGBO(241, 239, 239, 1),
+              color: const Color.fromRGBO(241, 239, 239, 1),
             )),
-            margin: EdgeInsets.all(10),
+            margin: const EdgeInsets.all(10),
             child: Stack(
               children: [
                 const Positioned(
@@ -302,7 +302,7 @@ class _Upload_VideoState extends State<Upload_Video> {
             ),
           ),
         if (postVideo.isNotEmpty)
-          Container(
+          SizedBox(
             height: 245,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
@@ -316,7 +316,7 @@ class _Upload_VideoState extends State<Upload_Video> {
                 return Center(
                   child: Container(
                     width: MediaQuery.sizeOf(context).width / 1 - 5,
-                    margin: EdgeInsets.all(3),
+                    margin: const EdgeInsets.all(3),
                     child:
                         /* Stack(
                         children: [
@@ -418,7 +418,8 @@ class _Upload_VideoState extends State<Upload_Video> {
                               width: 28,
                               height: 28,
                               decoration: BoxDecoration(
-                                  color: Color.fromRGBO(146, 146, 149, 0.89),
+                                  color:
+                                      const Color.fromRGBO(146, 146, 149, 0.89),
                                   borderRadius: BorderRadius.circular(5)),
                               child: const Icon(
                                 Icons.delete,

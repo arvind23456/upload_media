@@ -1,40 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:mango/flow2/add_location.dart';
-import 'package:mango/flow2/add_title.dart';
-import 'package:mango/flow2/caption.dart';
-import 'package:mango/flow2/category_list.dart';
+import 'package:mango/video_flow/add_location.dart';
+import 'package:mango/video_flow/add_title.dart';
+import 'package:mango/video_flow/caption.dart';
+import 'package:mango/video_flow/category_list.dart';
 
-import 'package:mango/flow2/tag_friends.dart';
+import 'package:mango/video_flow/tag_friends.dart';
 
-import 'package:mango/flow2/upload_video.dart';
+import 'package:mango/video_flow/upload_video.dart';
 
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: flow1(),
+    home: VideoFlow(),
   ));
 }
 
-class flow1 extends StatefulWidget {
-  flow1({super.key});
+class VideoFlow extends StatefulWidget {
+  VideoFlow({super.key});
 
   @override
-  State<flow1> createState() => _flow1State();
+  State<VideoFlow> createState() => VideoFlowState();
 }
 
-class _flow1State extends State<flow1> {
+class VideoFlowState extends State<VideoFlow> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(250, 250, 250, 1),
+      backgroundColor: const Color.fromRGBO(250, 250, 250, 1),
       appBar: AppBar(
-        shape: Border(
+        shape: const Border(
             bottom: BorderSide(
           width: 1,
           color: Color.fromRGBO(241, 239, 239, 1),
         )),
-        leading: Icon(Icons.arrow_back),
-        title: Text('Create Post'),
+        leading: const Icon(Icons.arrow_back),
+        title: const Text('Create Post'),
         titleSpacing: 0,
         actions: [
           Padding(
@@ -42,9 +42,9 @@ class _flow1State extends State<flow1> {
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: Colors.pink),
               onPressed: () {
-                print("image posted");
+                print("post uploaded");
               },
-              child: Text(
+              child: const Text(
                 'Post',
                 style: TextStyle(color: Colors.white),
               ),
@@ -52,10 +52,10 @@ class _flow1State extends State<flow1> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Column(
           children: [
-            Upload_Video(),
+            UploadVideo(),
             Addtitle(),
             Category(),
             Caption(),

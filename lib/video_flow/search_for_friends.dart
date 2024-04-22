@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:mango/utils/icons.dart';
 
 class Searchforfriends extends StatefulWidget {
   const Searchforfriends({super.key});
@@ -28,10 +27,11 @@ class _SearchforfriendsState extends State<Searchforfriends> {
 
   bool isSearching = false;
 
-  var FilterList = [];
+  var filterList = [];
 
   @override
   void initState() {
+    super.initState();
     searchController.addListener(() {
       setState(() {
         if (searchController.text.isNotEmpty) {
@@ -41,9 +41,9 @@ class _SearchforfriendsState extends State<Searchforfriends> {
     });
   }
 
-  void SearchFilter(String value) {
+  void searchFilter(String value) {
     setState(() {
-      FilterList = arrNames
+      filterList = arrNames
           .where(
               (element) => element.toLowerCase().contains(value.toLowerCase()))
           .toList();
@@ -60,9 +60,7 @@ class _SearchforfriendsState extends State<Searchforfriends> {
       appBar: AppBar(
         leading: TextButton(
             onPressed: () {
-              Navigator.pop(
-                context,
-              );
+              Navigator.pop(context);
             },
             child: Icon(
               Icons.arrow_back,
@@ -82,7 +80,7 @@ class _SearchforfriendsState extends State<Searchforfriends> {
                 child: TextField(
                   controller: searchController,
                   onChanged: (value) {
-                    SearchFilter(value);
+                    searchFilter(value);
                   },
                   decoration: InputDecoration(
                     hintText: 'Search for user',
@@ -103,10 +101,10 @@ class _SearchforfriendsState extends State<Searchforfriends> {
                 ),
               ),
             ),
-            if (FilterList.isEmpty && isSearching)
+            if (filterList.isEmpty && isSearching)
               const Center(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 250),
+                  padding: EdgeInsets.only(top: 250),
                   child: Text(
                     'User not found',
                     style: TextStyle(color: Colors.black54, fontSize: 27),
@@ -118,7 +116,7 @@ class _SearchforfriendsState extends State<Searchforfriends> {
                 child: ListView.builder(
                   shrinkWrap: true,
                   physics: ScrollPhysics(),
-                  itemCount: FilterList.length,
+                  itemCount: filterList.length,
                   itemBuilder: (context, index) {
                     final verifiedNames = [
                       'Graver_Merchant',
@@ -130,12 +128,11 @@ class _SearchforfriendsState extends State<Searchforfriends> {
                     final bool isVerified =
                         verifiedNames.contains(arrNames[index]);
 
-                    final option = FilterList[index];
+                    //    final option = filterList[index];
 
                     return ListTile(
                       onTap: () {
-                        Navigator.pop(context, FilterList[index]);
-                        print(FilterList[index]);
+                        Navigator.pop(context, filterList[index]);
                       },
                       contentPadding: EdgeInsets.all(9),
                       leading: CircleAvatar(
@@ -145,7 +142,7 @@ class _SearchforfriendsState extends State<Searchforfriends> {
                       ),
                       title: Row(
                         children: [
-                          Text(FilterList[index]),
+                          Text(filterList[index]),
                           if (isVerified)
                             Container(
                               padding: EdgeInsets.only(left: 5),

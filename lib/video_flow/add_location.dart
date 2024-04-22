@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:mango/flow2/search_location.dart';
+import 'package:mango/video_flow/search_location.dart';
 import 'package:mango/utils/icons.dart';
 
 class Addlocation extends StatefulWidget {

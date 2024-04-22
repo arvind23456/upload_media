@@ -1,11 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:mango/flow2/page1.dart';
-import 'package:mango/flow2/page3.dart';
-import 'package:mango/ui/4th_page.dart';
-import 'package:mango/ui/main.dart';
-import 'package:mango/ui/search_bar.dart';
+
+import 'package:mango/ui_testing/4th_page.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -42,11 +39,9 @@ class Gallery1 extends StatelessWidget {
         appBar: AppBar(
           leading: TextButton(
             onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => FlutterApps(),
-                  ));
+              Navigator.pop(
+                context,
+              );
             },
             child: Icon(
               Icons.arrow_back,

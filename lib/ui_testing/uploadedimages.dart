@@ -11,16 +11,17 @@ class _FlutterAppState extends State<FlutterApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(250, 250, 250, 1),
+      backgroundColor: const Color.fromRGBO(250, 250, 250, 1),
       appBar: AppBar(
-        shape: Border.all(width: 1, color: Color.fromRGBO(235, 232, 255, 0.75)),
-        title: Text('Create Post'),
-        leading: Icon(Icons.arrow_back),
+        shape: Border.all(
+            width: 1, color: const Color.fromRGBO(235, 232, 255, 0.75)),
+        title: const Text('Create Post'),
+        leading: const Icon(Icons.arrow_back),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 15),
             child: ElevatedButton(
-                child: Text(
+                child: const Text(
                   'Post',
                   style: TextStyle(color: Colors.white),
                 ),
@@ -81,14 +82,14 @@ class _FlutterAppState extends State<FlutterApp> {
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
                       borderSide:
-                          BorderSide(width: 1, color: Colors.pinkAccent),
+                          const BorderSide(width: 1, color: Colors.pinkAccent),
                     ),
                     hintText: "Caption"),
               ),
             ),
             Container(
-              padding: EdgeInsets.only(left: 10, bottom: 15, top: 15),
-              decoration: BoxDecoration(
+              padding: const EdgeInsets.only(left: 10, bottom: 15, top: 15),
+              decoration: const BoxDecoration(
                 border: Border(
                   bottom: BorderSide(
                       width: 1, color: Color.fromRGBO(241, 239, 239, 1)),
@@ -99,7 +100,7 @@ class _FlutterAppState extends State<FlutterApp> {
               child: Row(
                 children: [
                   Image.asset('assets/images/location.png'),
-                  Text(
+                  const Text(
                     'Add Location',
                     style: TextStyle(fontSize: 17, color: Colors.black),
                   ),
@@ -107,8 +108,8 @@ class _FlutterAppState extends State<FlutterApp> {
               ),
             ),
             Container(
-                padding: EdgeInsets.only(left: 13, top: 10, bottom: 15),
-                decoration: BoxDecoration(
+                padding: const EdgeInsets.only(left: 13, top: 10, bottom: 15),
+                decoration: const BoxDecoration(
                     border: Border(
                         bottom: BorderSide(
                             width: 1,
@@ -116,7 +117,7 @@ class _FlutterAppState extends State<FlutterApp> {
                 child: Row(
                   children: [
                     Image.asset('assets/images/tag.png'),
-                    Text(
+                    const Text(
                       'Tag Friends',
                       style: TextStyle(fontSize: 17, color: Colors.black),
                     ),

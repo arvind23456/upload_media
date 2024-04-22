@@ -32,11 +32,11 @@ class _AddtitleState extends State<Addtitle> {
             Container(
               child: Logoicon.title,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 12.5),
-              child: Container(
+            const Padding(
+              padding: EdgeInsets.only(left: 12.5),
+              child: SizedBox(
                   width: 200,
-                  child: const TextField(
+                  child: TextField(
                     style: TextStyle(fontWeight: FontWeight.w500),
                     maxLines: 1,
                     decoration: InputDecoration(

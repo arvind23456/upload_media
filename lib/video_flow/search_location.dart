@@ -31,6 +31,7 @@ class _SearchlocationState extends State<Searchlocation> {
 
   @override
   void initState() {
+    super.initState();
     searchcontroller.addListener(() {
       setState(() {
         if (searchcontroller.text.isNotEmpty) {
@@ -145,24 +146,3 @@ class _SearchlocationState extends State<Searchlocation> {
     );
   }
 }
-
-
-
-
-/*
- Container(
-                child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: filterlist.length,
-                    physics: ScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        title: Text(
-                          filterlist[index],
-                          style: const TextStyle(
-                            fontSize: 16,
-                          ),
-                        ),
-                      );
-                    }),
-              ),  */

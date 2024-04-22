@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:mango/flow2/search_for_friends.dart';
+import 'package:mango/video_flow/search_for_friends.dart';
 
 void main() {
   runApp(const MaterialApp(

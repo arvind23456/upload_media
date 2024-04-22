@@ -1,12 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:mango/flow2/add_location.dart';
-import 'package:mango/flow2/add_title.dart';
-import 'package:mango/flow2/caption.dart';
-import 'package:mango/flow2/category_list.dart';
-import 'package:mango/flow2/page2.dart';
-import 'package:mango/flow2/tag_friends.dart';
+import 'package:mango/video_flow/add_location.dart';
+import 'package:mango/video_flow/add_title.dart';
+import 'package:mango/video_flow/caption.dart';
+import 'package:mango/video_flow/category_list.dart';
+import 'package:mango/video_testing/page2.dart';
+import 'package:mango/video_flow/tag_friends.dart';
 
 void main() {
   runApp(Videopost());

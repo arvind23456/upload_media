@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:mango/flow2/add_location.dart';
-import 'package:mango/flow2/caption.dart';
-import 'package:mango/flow2/tag_friends.dart';
-import 'package:mango/ui/upload_photo.dart';
+import 'package:mango/video_flow/add_location.dart';
+import 'package:mango/video_flow/caption.dart';
+import 'package:mango/video_flow/tag_friends.dart';
+import 'package:mango/image_flow/upload_photo.dart';
 
 void main() {
   runApp(FlutterApps());

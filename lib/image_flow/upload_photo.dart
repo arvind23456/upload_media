@@ -17,6 +17,18 @@ class Upload_Photo extends StatefulWidget {
 
 class _Upload_PhotoState extends State<Upload_Photo> {
   List<XFile> postImg = [];
+
+  void _camera() async {
+    final XFile? image = await ImagePicker().pickImage(
+        source: ImageSource.camera, preferredCameraDevice: CameraDevice.rear);
+    setState(() {
+      if (image != null) {
+        postImg.add(image);
+      }
+    });
+    Navigator.pop(context);
+  }
+
   void _loadGalleryImages() async {
     final List<XFile> images = await ImagePicker().pickMultiImage();
     setState(() {
@@ -33,17 +45,6 @@ class _Upload_PhotoState extends State<Upload_Photo> {
     Navigator.pop(context);
   }
 
-  void _camera() async {
-    final XFile? image = await ImagePicker().pickImage(
-        source: ImageSource.camera, preferredCameraDevice: CameraDevice.rear);
-    setState(() {
-      if (image != null) {
-        postImg.add(image);
-      }
-    });
-    Navigator.pop(context);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -55,17 +56,17 @@ class _Upload_PhotoState extends State<Upload_Photo> {
               Container(
                 width: 396,
                 height: 200,
-                child: const Padding(
-                  padding: EdgeInsets.only(top: 7, left: 9),
-                  child: Text(
-                    'Upload Photo',
-                    style: Textcolor.fontsizecolor,
-                  ),
-                ),
                 decoration: BoxDecoration(
                   border: Border.all(
                     width: 1,
                     color: const Color.fromRGBO(241, 239, 239, 1),
+                  ),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.only(top: 7, left: 9),
+                  child: Text(
+                    'Upload Photo',
+                    style: Textcolor.fontsizecolor,
                   ),
                 ),
               ),

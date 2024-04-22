@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:mango/flow2/category_list.dart';
-import 'package:mango/flow2/search_for_friends.dart';
-import 'package:mango/ui/mfriends.dart';
+
+import 'package:mango/video_flow/search_for_friends.dart';
+
 import 'package:mango/utils/icons.dart';
 import 'package:mango/utils/textcolor.dart';
 
@@ -25,7 +25,7 @@ class _TagfriendsState extends State<Tagfriends> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         border: Border(
             bottom: BorderSide(
           width: 1,
@@ -50,18 +50,19 @@ class _TagfriendsState extends State<Tagfriends> {
                       final friend = await Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Searchforfriends(),
+                            builder: (context) => const Searchforfriends(),
                           ));
 
                       setState(() {
-                        if (selectedFriend.contains(friend) == false) {
+                        //  if (selectedFriend.contains(friend) == false)
+                        {
                           selectedFriend.add(friend);
                         }
                       });
                       print(selectedFriend);
                     },
                     child: Container(
-                      child: Text(
+                      child: const Text(
                         'Tag Friends',
                         style: Textcolor.fontsizecolor,
                       ),
@@ -75,7 +76,8 @@ class _TagfriendsState extends State<Tagfriends> {
                       child: GridView.builder(
                         itemCount: selectedFriend.length + 1,
                         shrinkWrap: true,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 3,
                           mainAxisExtent: 37,
                           childAspectRatio: 20,
@@ -85,17 +87,18 @@ class _TagfriendsState extends State<Tagfriends> {
                             return Container(
                               child: TextButton(
                                 style: TextButton.styleFrom(
-                                    padding: EdgeInsets.only(left: 7)),
+                                    padding: const EdgeInsets.only(left: 7)),
                                 onPressed: () async {
-                                  final Friend = await Navigator.push(
+                                  final friend = await Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => Searchforfriends(),
+                                      builder: (context) =>
+                                          const Searchforfriends(),
                                     ),
                                   );
-                                  if (!selectedFriend.contains(Friend)) {
+                                  if (!selectedFriend.contains(friend)) {
                                     setState(() {
-                                      selectedFriend.add(Friend);
+                                      selectedFriend.add(friend);
                                     });
                                   } else {
                                     showToast();
@@ -146,8 +149,8 @@ class _TagfriendsState extends State<Tagfriends> {
                                                   selectedFriend[index],
                                                   overflow:
                                                       TextOverflow.ellipsis,
-                                                  style:
-                                                      TextStyle(fontSize: 14),
+                                                  style: const TextStyle(
+                                                      fontSize: 14),
                                                 ),
                                               ),
                                             ),

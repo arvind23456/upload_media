@@ -158,7 +158,7 @@ class _CategoryState extends State<Category> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(bottom: 7, left: 7, top: 18),
-                  child: Container(
+                  child: SizedBox(
                     width: 30,
                     child: Logoicon.categorymenu,
                   ),
@@ -199,7 +199,8 @@ class _CategoryState extends State<Category> {
                 ),
               ],
             ),
-            if (showCategoryList && selectedCategory != null)
+            if (showCategoryList) // && selectedCategory != null
+
               Container(
                 child: ListView.separated(
                     separatorBuilder: (context, index) => Divider(
@@ -218,7 +219,7 @@ class _CategoryState extends State<Category> {
                           ),
                         ),
                         onTap: () {
-                          selectedCategory = null;
+                          //  selectedCategory = null;
                           _controller.text = filterlist[index];
                           showCategoryList = false;
                           selectedCategory = filterlist[index];
