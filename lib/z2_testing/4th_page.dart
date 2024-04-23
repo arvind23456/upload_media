@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:mango/video_flow/add_location.dart';
 import 'package:mango/video_flow/tag_friends.dart';
-import 'package:mango/ui_testing/gallery1.dart';
-import 'package:mango/ui_testing/tagfriend1.dart';
+import 'package:mango/z2_testing/gallery1.dart';
+import 'package:mango/z2_testing/tagfriend1.dart';
 
 void main() {
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: CreatePost()));

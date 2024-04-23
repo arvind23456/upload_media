@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:mango/image_flow/splash_screen.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -14,6 +15,6 @@ class VideoFlow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return VideoFlow();
+    return SplashScreen();
   }
 }

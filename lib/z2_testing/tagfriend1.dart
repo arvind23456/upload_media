@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mango/video_flow/search_for_friends.dart';
-import 'package:mango/ui_testing/mfriends.dart';
+import 'package:mango/z2_testing/mfriends.dart';
 
 class Tagfriends1 extends StatefulWidget {
   const Tagfriends1({super.key});

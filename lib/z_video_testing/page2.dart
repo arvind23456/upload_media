@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-import 'package:mango/video_testing/page3.dart';
+import 'package:mango/z_video_testing/page3.dart';
 
 void main() {
   runApp(const MaterialApp(

@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:mango/ui_testing/4th_page.dart';
+import 'package:mango/z2_testing/4th_page.dart';
 
 void main() {
   runApp(MaterialApp(

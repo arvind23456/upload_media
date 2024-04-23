@@ -32,17 +32,62 @@ class _Upload_PhotoState extends State<Upload_Photo> {
   void _loadGalleryImages() async {
     final List<XFile> images = await ImagePicker().pickMultiImage();
     setState(() {
-      postImg = images;
+      postImg.addAll(images);
     });
     Navigator.pop(context);
   }
 
-  void _addmore() async {
-    final List<XFile> imagess = await ImagePicker().pickMultiImage();
-    setState(() {
-      postImg.addAll(imagess);
-    });
-    Navigator.pop(context);
+  _moreModalBottomSheet() {
+    showModalBottomSheet(
+      backgroundColor: Colors.white,
+      context: context,
+      builder: (context) {
+        return Container(
+          height: 200,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 25, left: 25),
+                child: Column(
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        _camera();
+                      },
+                      icon: const Icon(
+                        Icons.camera,
+                        size: 70,
+                      ),
+                    ),
+                    const Text('Camera'),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20, top: 25),
+                child: Container(
+                  child: Column(
+                    children: [
+                      IconButton(
+                          onPressed: () {
+                            _loadGalleryImages();
+                          },
+                          icon: const Icon(
+                            Icons.folder,
+                            color: Colors.lightBlue,
+                            size: 70,
+                          )),
+                      const Text('Files'),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -62,7 +107,7 @@ class _Upload_PhotoState extends State<Upload_Photo> {
                     color: const Color.fromRGBO(241, 239, 239, 1),
                   ),
                 ),
-                child: Padding(
+                child: const Padding(
                   padding: EdgeInsets.only(top: 7, left: 9),
                   child: Text(
                     'Upload Photo',
@@ -75,58 +120,7 @@ class _Upload_PhotoState extends State<Upload_Photo> {
                 child: Center(
                   child: TextButton(
                     onPressed: () {
-                      showModalBottomSheet(
-                        backgroundColor: Colors.white,
-                        context: context,
-                        builder: (context) {
-                          return Container(
-                            height: 200,
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(top: 25, left: 25),
-                                  child: Column(
-                                    children: [
-                                      IconButton(
-                                        onPressed: () {
-                                          _camera();
-                                        },
-                                        icon: const Icon(
-                                          Icons.camera,
-                                          size: 70,
-                                        ),
-                                      ),
-                                      const Text('Camera'),
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 20, top: 25),
-                                  child: Container(
-                                    child: Column(
-                                      children: [
-                                        IconButton(
-                                            onPressed: () {
-                                              _loadGalleryImages();
-                                            },
-                                            icon: const Icon(
-                                              Icons.folder,
-                                              color: Colors.lightBlue,
-                                              size: 70,
-                                            )),
-                                        const Text('Files'),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                      );
+                      _moreModalBottomSheet();
                     },
                     child: Logoicon.upload,
                   ),
@@ -145,53 +139,7 @@ class _Upload_PhotoState extends State<Upload_Photo> {
                 if ((index == postImg.length)) {
                   return TextButton(
                     onPressed: () {
-                      showModalBottomSheet(
-                        backgroundColor: const Color.fromRGBO(250, 250, 250, 1),
-                        context: context,
-                        builder: (context) {
-                          return Padding(
-                            padding: const EdgeInsets.only(left: 20, top: 10),
-                            child: Container(
-                                height: 180,
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Column(
-                                      children: [
-                                        IconButton(
-                                            onPressed: () {
-                                              _camera();
-                                            },
-                                            icon: const Icon(
-                                              Icons.camera,
-                                              size: 70,
-                                            )),
-                                        const Text('Camera'),
-                                      ],
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 20),
-                                      child: Column(
-                                        children: [
-                                          IconButton(
-                                            onPressed: () {
-                                              _addmore();
-                                            },
-                                            icon: const Icon(
-                                              Icons.folder,
-                                              color: Colors.lightBlue,
-                                              size: 70,
-                                            ),
-                                          ),
-                                          const Text('Files'),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                )),
-                          );
-                        },
-                      );
+                      _moreModalBottomSheet();
                     },
                     child: Stack(
                       children: [

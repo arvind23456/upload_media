@@ -5,7 +5,7 @@ import 'package:mango/video_flow/add_location.dart';
 import 'package:mango/video_flow/add_title.dart';
 import 'package:mango/video_flow/caption.dart';
 import 'package:mango/video_flow/category_list.dart';
-import 'package:mango/video_testing/page2.dart';
+import 'package:mango/z_video_testing/page2.dart';
 import 'package:mango/video_flow/tag_friends.dart';
 
 void main() {

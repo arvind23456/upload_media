@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mango/utils/icons.dart';
 import 'package:mango/utils/textcolor.dart';
+import 'package:mango/z2_testing/button_class.dart';
 
 class Addtitle extends StatefulWidget {
   const Addtitle({super.key});
@@ -45,6 +46,10 @@ class _AddtitleState extends State<Addtitle> {
                       hintStyle: Textcolor.fontsizecolor,
                     ),
                   )),
+            ),
+            RoundedButton(
+              buttonName: 'post',
+              callBack: () {},
             ),
           ],
         ),
