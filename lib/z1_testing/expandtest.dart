@@ -116,7 +116,12 @@ class DashBoardScreen extends StatelessWidget {
                           ),
                           Container(
                             margin: EdgeInsets.only(top: 37),
-                            child: Text('jsdkfhs'),
+                            child: Center(
+                              child: Image.asset(
+                                'assets/images/Rectangle 5055.png',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
                         ],
                       ),
