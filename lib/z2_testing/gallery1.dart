@@ -69,7 +69,7 @@ class Gallery1 extends StatelessWidget {
           bottom: TabBar(
             tabs: [
               Tab(text: "Photos"),
-              Tab(text: " Album"),
+              Tab(text: "Album"),
               Tab(text: "Videos"),
             ],
           ),
@@ -88,10 +88,11 @@ class Gallery1 extends StatelessWidget {
                 },
                 itemCount: 21,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 8,
-                    mainAxisSpacing: 7,
-                    mainAxisExtent: 170),
+                  crossAxisCount: 3,
+                  crossAxisSpacing: 8,
+                  mainAxisSpacing: 7,
+                  mainAxisExtent: 170,
+                ),
               ),
               GridView.builder(
                 shrinkWrap: true,
